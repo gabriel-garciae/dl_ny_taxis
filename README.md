@@ -20,10 +20,17 @@ A solução foi implementada utilizando uma arquitetura de dados em camadas no D
    - Padronização de nomes de colunas
    - Particionamento por ano/mês/dia
    - Transformações de tipos de dados
+   - Documentação completa de todas as colunas com descrições detalhadas
 
 4. **Gold** (`taxi_catalog.gold.*`)
    - Agregações e métricas para análise
    - Tabelas específicas para cada tipo de análise
+
+## Pipeline de Dados
+
+O pipeline de dados é executado através de um workflow automatizado que coordena a execução dos notebooks em sequência:
+
+![Pipeline de Dados](images/pipeline.png)
 
 ## Estrutura do projeto
 
@@ -37,6 +44,8 @@ dl_ny_taxis/
 ├─ analysis/              # Notebooks de análise
 │  ├─ yellow_taxi_monthly_avg.ipynb        # Média mensal de valores
 │  └─ yellow_taxi_hourly_avg_may_2023.ipynb # Média horária de passageiros
+├─ workflows/            # Configurações de workflows
+│  └─ pipeline.yml       # Definição do pipeline de dados
 └─ README.md
 ```
 
@@ -56,7 +65,7 @@ dl_ny_taxis/
 
 ### 2. Pipeline de dados
 
-Execute os notebooks na seguinte ordem:
+O pipeline é executado automaticamente através do workflow definido em `workflows/pipeline.yml`. Os notebooks são executados na seguinte ordem:
 
 1. **Download dos dados** (`src/ingestion/download_data.ipynb`)
    - Baixa os dados de Janeiro a Maio de 2023
@@ -86,7 +95,9 @@ Execute os notebooks na seguinte ordem:
 
 ## Estrutura dos dados
 
-A documentação detalhada dos campos e suas descrições está disponível diretamente na tabela `taxi_catalog.silver.yellow_taxi` no Databricks, onde é possível consultar o schema completo com os tipos de dados e descrições de cada coluna.
+A documentação detalhada dos campos está disponível na tabela `taxi_catalog.silver.yellow_taxi`. Todas as colunas possuem descrições completas que explicam seu significado e uso, como pode ser visto na imagem abaixo:
+
+![Documentação da Tabela Silver](images/documentacao.png)
 
 ## Fonte dos dados
 
