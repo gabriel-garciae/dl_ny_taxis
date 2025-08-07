@@ -1,7 +1,7 @@
 resources:
   jobs:
-    New_Job_Aug_07_2025_07_38_PM:
-      name: New Job Aug 07, 2025, 07:38 PM
+    Pipeline_táxis:
+      name: pipeline_taxis
       schedule:
         quartz_cron_expression: 34 30 0 * * ?
         timezone_id: UTC
